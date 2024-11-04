@@ -1,3 +1,8 @@
+/***************************************************************************
+* COMSC-210 | Lab 26 | Grant Luo
+* Editor: CLion
+* Compiler: Apple clang version 16.0.0
+*/
 #include <iostream>
 #include <fstream>
 #include <chrono>
