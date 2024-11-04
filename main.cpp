@@ -73,7 +73,34 @@ int main()
             {
                 case 0: // Sort vector
                 {
-                    sort(vectorData.begin(), vectorData.end())''
+                    sort(vectorData.begin(), vectorData.end());
+                    break;
+                }
+
+                case 1: // Sort list
+                {
+                    listData.sort();
+                    break;
+                }
+
+                case 2: // Sort set (a set is already sorted upon creation)
+                {
+                    break;
+                }
+            }
+            auto end = chrono::high_resolution_clock::now();
+            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+        }
+
+        // INSERTing race
+        for (int i = 0; i < STRUCTURES; i++)
+        {
+            auto start = chrono::high_resolution_clock::now();
+            switch (i)
+            {
+                case 0: // Insert into vector
+                {
+                    int ind_v = v
                 }
             }
         }
