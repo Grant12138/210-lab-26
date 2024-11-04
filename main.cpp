@@ -21,6 +21,9 @@ const int RUNS = 15; // Run the experiment 15 times
 
 int main()
 {
+    // Use long long to prevent overflow
+    long long results[RUNS][ROWS][COLS] {};
+    long long subtotals[ROWS][COLS] {};
 
     string labels [] {"Read", "Sort", "Insert", "Delete"};
     string structureLabels[] {"Vector", "List", "Set"};
@@ -63,6 +66,8 @@ int main()
             }
             auto end = chrono::high_resolution_clock::now();
             auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+            results[run][0][i] = duration.count();
+            fin.close();
         }
 
         // SORTing race
@@ -90,6 +95,7 @@ int main()
             }
             auto end = chrono::high_resolution_clock::now();
             auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+            results[run][1][i] = duration.count();
         }
 
         // INSERTing race
@@ -120,6 +126,7 @@ int main()
             }
             auto end = chrono::high_resolution_clock::now();
             auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+            results[run][2][i] = duration.count();
         }
 
         // DELETing race
@@ -160,8 +167,11 @@ int main()
             }
             auto end = chrono::high_resolution_clock::now();
             auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+            results[run][3][i] = duration.count();
         }
     }
+
+    // COMPU
 
     return 0;
 }
