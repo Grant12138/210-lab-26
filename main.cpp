@@ -100,9 +100,32 @@ int main()
             {
                 case 0: // Insert into vector
                 {
-                    int ind_v = v
+                    int ind_v = vectorData.size() / 2;
+                    vectorData.insert(vectorData.begin() + ind_v, "TESTCODE");
+                    break;
+                }
+                case 1: // Insert into list
+                {
+                    int ind_l = listData.size() / 2;
+                    auto it = listData.begin();
+                    advance(it, ind_l);
+                    listData.insert(it, "TESTCODE");
+                    break;
+                }
+                case 2: // Insert into set
+                {
+                    setData.insert("TESTCODE");
+                    break;
                 }
             }
+            auto end = chrono::high_resolution_clock::now();
+            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+        }
+
+        // DELETing race
+        for (int i = 0; i < STRUCTURES; i++)
+        {
+
         }
     }
 
