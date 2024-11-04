@@ -126,14 +126,40 @@ int main()
         for (int i = 0; i < STRUCTURES; i++)
         {
             string target_v = vectorData[ vectorData.size() / 2 ];
+
             auto it1 = listData.begin();
             int ind1 = listData.size() / 2;
             advance(it1, ind1);
             string target_l = *it1;
+
             auto it2 = setData.begin();
             int ind2 = setData.size() / 2;
             advance(it2, ind2);
             string target_s = *it2;
+
+            auto start = chrono::high_resolution_clock::now();
+            switch (i)
+            {
+                case 0: // Delete from vector
+                {
+                    vectorData.erase(remove(vectorData.begin(), vectorData.end, target_v));
+                    break;
+                }
+
+                case 1: // Delete from list
+                {
+                    listData.remove(target_l);
+                    break;
+                }
+
+                case 2: // Delete from set
+                {
+                    setData.erase(target_s);
+                    break;
+                }
+            }
+            auto end = chrono::high_resolution_clock::now();
+            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
         }
     }
 
