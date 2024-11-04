@@ -125,7 +125,15 @@ int main()
         // DELETing race
         for (int i = 0; i < STRUCTURES; i++)
         {
-
+            string target_v = vectorData[ vectorData.size() / 2 ];
+            auto it1 = listData.begin();
+            int ind1 = listData.size() / 2;
+            advance(it1, ind1);
+            string target_l = *it1;
+            auto it2 = setData.begin();
+            int ind2 = setData.size() / 2;
+            advance(it2, ind2);
+            string target_s = *it2;
         }
     }
 
