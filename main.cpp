@@ -28,8 +28,7 @@ int main()
     long long results[RUNS][ROWS][COLS] {};
     long long subtotals[ROWS][COLS] {};
 
-    string labels [] {"Read", "Sort", "Insert", "Delete"};
-    string structureLabels[] {"Vector", "List", "Set"};
+    string labels[] {"Read", "Sort", "Insert", "Delete"};
 
     // Perform the experiment RUNS times
     for (int run = 0; run < RUNS; run++)
