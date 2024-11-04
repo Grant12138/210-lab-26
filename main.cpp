@@ -149,7 +149,7 @@ int main()
             {
                 case 0: // Delete from vector
                 {
-                    vectorData.erase(remove(vectorData.begin(), vectorData.end, target_v));
+                    vectorData.erase(remove(vectorData.begin(), vectorData.end(), target_v));
                     break;
                 }
 
@@ -171,7 +171,39 @@ int main()
         }
     }
 
-    // COMPU
+    // Compute Subtotals
+    for (int run = 0; run < RUNS; run++)
+    {
+        for (int op = 0; op < ROWS; op++)
+        {
+            for (int ds = 0; ds < COLS; ds++)
+                subtotals[op][ds] += results[run][op][ds];
+        }
+    }
+
+    // Compute Averages
+    double averages[ROWS][COLS] {};
+    for (int op = 0; op < ROWS; op++)
+    {
+        for (int ds = 0; ds < COLS; ds++)
+            averages[op][ds] = subtotals[op][ds] / (double) RUNS;
+    }
+
+    // Display the averaged results
+    cout << setw(W1) << "Operations";
+    cout << setw(W1) << "Vector" << setw(W1) << "List" << setw(W1) << "Set\n";
+    for (int op = 0; op < ROWS; op++)
+    {
+        cout << setw(W1) << labels[op];
+        for (int ds = 0; ds < COLS; ds++)
+        {
+            if (averages[op][ds] == -1)
+                cout << setw(W1) << "-";
+            else
+                cout << setw(W1) << averages[op][ds];
+        }
+        cout << "\n";
+    }
 
     return 0;
 }
