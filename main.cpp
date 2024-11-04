@@ -28,9 +28,54 @@ int main()
     // Perform the experiment RUNS times
     for (int run = 0; run < RUNS; run++)
     {
+        string cd;
+        vector<string> vectorData {};
+        list<string> listData {};
+        set<string> setData {};
+
+        // READing race
         for (int i = 0; i < STRUCTURES; i++)
         {
+            ifstream fin("codes.txt");
+            auto start = chrono::high_resolution_clock::now();
+            switch (i)
+            {
+                case 0: // Read into vector
+                {
+                    while (fin >> cd)
+                        vectorData.push_back(cd);
+                    break;
+                }
 
+                case 1: // Read into list
+                {
+                    while (fin >> cd)
+                        listData.push_back(cd);
+                    break;
+                }
+
+                case 2: // Read into set
+                {
+                    while (fin >> cd)
+                        setData.insert(cd);
+                    break;
+                }
+            }
+            auto end = chrono::high_resolution_clock::now();
+            auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+        }
+
+        // SORTing race
+        for (int i = 0; i < STRUCTURES; i++)
+        {
+            auto start = chrono::high_resolution_clock::now();
+            switch (i)
+            {
+                case 0: // Sort vector
+                {
+                    sort(vectorData.begin(), vectorData.end())''
+                }
+            }
         }
     }
 
